@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:background="#FFFFFF">
+
+<!--    <LinearLayout-->
+<!--        android:orientation="vertical"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:gravity="center"-->
+<!--        android:padding="24dp">-->
+
+<!--        <EditText-->
+<!--            android:id="@+id/editTextUsername"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="Usuário"-->
+<!--            android:drawableStart="@drawable/ic_user"-->
+<!--            android:background="@drawable/editText_background"-->
+<!--            android:padding="16dp"-->
+<!--            android:layout_marginBottom=""-->
+
+<!--    </LinearLayout>-->
+
+</ScrollView>
