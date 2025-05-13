@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import br.com.mobile.fernanda.designer.data.provider.TokenManagerProvider
 import br.com.mobile.fernanda.designer.databinding.FormAuthenticateActivityBinding
 import br.com.mobile.fernanda.designer.network.ApiClient
 import br.com.mobile.fernanda.designer.network.AuthService
@@ -20,8 +21,6 @@ class FormAuthenticateActivity : AppCompatActivity() {
 
     private lateinit var binding: FormAuthenticateActivityBinding
 
-    private lateinit var tokenManager: TokenManager
-    private lateinit var jwtTokenService: JwtTokenService
     private lateinit var authService: AuthService
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,19 +45,11 @@ class FormAuthenticateActivity : AppCompatActivity() {
         binding.progressBar.visibility = View.VISIBLE
         binding.formAuthenticateButtonAuthenticateActivity.isEnabled = false
 
-        tokenManager = TokenManager(this)
-        jwtTokenService = ApiClient.generateJwtToken(tokenManager)
+        val tokenManager = TokenManagerProvider.getInstance()
         authService = ApiClient.authenticate(tokenManager)
 
         lifecycleScope.launch {
             try {
-                tokenManager.clearToken()
-                val jwtResponse = jwtTokenService.login(LoginRequest(
-                    "admin",
-                    "admin"
-                ))
-                tokenManager.saveToken(jwtResponse.token, jwtResponse.expirationTime)
-                Log.d("JWT LOGIN", "doLogin: ${jwtResponse.token}")
                 val payload = AuthenticateRequest(email, password)
                 val response = authService.authenticate(payload)
                 Log.d("AUTHENTICATE RESPONSE", "doLogin: ${response.toString()}")

@@ -40,22 +40,4 @@ object ApiClient {
             .build()
             .create(AuthService::class.java)
     }
-
-//    val authService: AuthService by lazy {
-//        Retrofit.Builder()
-//            .baseUrl(BASE_URL)
-//            .addConverterFactory(GsonConverterFactory.create())
-//            .build()
-//            .create(AuthService::class.java)
-//    }
-//
-//    val generateJwtToken: JwtTokenService by lazy {
-//        Retrofit.Builder()
-//            .baseUrl(BASE_URL)
-//            .addConverterFactory(GsonConverterFactory.create())
-//            .build()
-//            .create(JwtTokenService::class.java)
-//    }
-
-
 }
